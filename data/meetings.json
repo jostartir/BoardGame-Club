@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1,
+    "title": "Friday game night",
+    "scheduledAt": "2026-11-12T16:25:40.937088900",
+    "availableMinutes": 120,
+    "status": "PLANNED",
+    "participants": [
+      {
+        "id": 1,
+        "name": "Alikhan"
+      },
+      {
+        "id": 2,
+        "name": "Daniyar"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": 2,
+    "title": "Hello neightboiur",
+    "scheduledAt": "2026-11-13T16:53",
+    "availableMinutes": 25,
+    "status": "IN_PROGRESS",
+    "participants": [
+      {
+        "id": 1,
+        "name": "alsiher"
+      },
+      {
+        "id": 2,
+        "name": "nbula"
+      }
+    ],
+    "sessions": [
+      {
+        "id": 1,
+        "game": {
+          "id": 1,
+          "title": "Uno",
+          "minPlayers": 2,
+          "maxPlayers": 10,
+          "durationMinutes": 20,
+          "difficulty": 1,
+          "genre": "Card"
+        },
+        "participants": [
+          {
+            "id": 1,
+            "name": "alsiher"
+          },
+          {
+            "id": 2,
+            "name": "nbula"
+          }
+        ],
+        "results": [
+          {
+            "participant": {
+              "id": 1,
+              "name": "alsiher"
+            },
+            "score": 24
+          },
+          {
+            "participant": {
+              "id": 2,
+              "name": "nbula"
+            },
+            "score": 356
+          }
+        ],
+        "actualDurationMinutes": 23
+      }
+    ]
+  }
+]
