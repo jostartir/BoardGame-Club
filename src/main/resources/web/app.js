@@ -360,12 +360,30 @@ function saveScoreButton(path, player, input, messageFor) {
     const button = create("button", null, "Save score");
     button.type = "button";
     button.setAttribute("aria-label", "Save score for " + player.name);
-    button.addEventListener("click", () =>
+
+    input.addEventListener("input", () => {
+        input.setCustomValidity("");
+    });
+
+    button.addEventListener("click", () => {
+        const score = input.value.trim();
+
+        if (!/^[+-]?\d+$/.test(score)) {
+            input.setCustomValidity("Enter a whole number, for example 12.");
+            input.reportValidity();
+            return;
+        }
+
         run(async () => {
-            const result = await api("POST", path, { participantId: player.id, score: input.value });
+            const result = await api("POST", path, {
+                participantId: player.id,
+                score: score
+            });
             delete drafts[player.id];
             return result;
-        }, messageFor));
+        }, messageFor);
+    });
+
     return button;
 }
 
