@@ -12,7 +12,6 @@ public class GameSession {
     private final List<Participant> participants;
     private final List<PlayerResult> results;
 
-    // Пока партия не завершена, длительность равна 0.
     private int actualDurationMinutes;
 
     public GameSession(
@@ -93,12 +92,28 @@ public class GameSession {
             );
         }
 
-        // Если результат уже был, заменяем его новым.
         results.removeIf(existing ->
                 existing.getParticipant().getId().equals(participantId)
         );
 
         results.add(result);
+    }
+
+    public void correctResult(PlayerResult result) {
+        if (!isCompleted()) {
+            throw new IllegalStateException("Only a completed session can be corrected");
+        }
+        if (result == null) {
+            throw new IllegalArgumentException("Result must not be null");
+        }
+        Long participantId = result.getParticipant().getId();
+        for (int i = 0; i < results.size(); i++) {
+            if (results.get(i).getParticipant().getId().equals(participantId)) {
+                results.set(i, result);
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Participant is not in this session");
     }
 
     public void finish(int actualDurationMinutes) {

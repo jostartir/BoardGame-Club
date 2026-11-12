@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Board Game Club</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+    <h1>Board Game Club</h1>
+    <p>Plan game meetups, see which games fit, and track the score</p>
+</header>
+
+<main>
+    <section class="catalog" aria-labelledby="catalog-title">
+        <div class="section-head">
+            <h2 id="catalog-title">Game catalog</h2>
+            <p id="catalog-note">Loading games…</p>
+        </div>
+        <ul id="catalog" class="game-grid"></ul>
+    </section>
+
+    <section class="night" aria-labelledby="night-title">
+        <div class="section-head">
+            <h2 id="night-title">Game night</h2>
+            <p id="message" class="message" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="night-grid">
+            <div class="column">
+                <div class="panel">
+                    <h3>Saved meetings</h3>
+                    <ul id="meetings" class="meeting-list"></ul>
+                    <p id="meetings-empty" class="empty"></p>
+                </div>
+
+                <form id="meeting-form" class="panel" autocomplete="off">
+                    <h3>Meeting</h3>
+                    <label class="field">
+                        <span>Title</span>
+                        <input id="title" name="title" type="text" value="Friday game night">
+                    </label>
+                    <label class="field">
+                        <span>Date and time</span>
+                        <input id="when" name="date" type="datetime-local">
+                    </label>
+                    <label class="field">
+                        <span>Available minutes</span>
+                        <input id="minutes" name="minutes" type="text" inputmode="numeric" value="120">
+                    </label>
+                    <button type="submit" class="primary">Create meeting</button>
+                    <p id="meeting-info" class="meeting-info"></p>
+                </form>
+
+                <div class="panel">
+                    <h3>Participants</h3>
+                    <ul id="participants" class="people"></ul>
+                    <p id="participants-empty" class="empty"></p>
+                    <form id="participant-form" class="inline-form" autocomplete="off">
+                        <input id="name" name="name" type="text" placeholder="Name" aria-label="Participant name">
+                        <button type="submit" id="add-button">Add</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="panel recommend">
+                    <h3>Recommended games</h3>
+                    <div id="strategies" class="segmented" role="radiogroup" aria-label="Order of recommendations"></div>
+                    <p id="recommend-note" class="note"></p>
+                    <ul id="recommendations" class="game-list"></ul>
+                    <button id="start-button" type="button" class="primary" disabled>Start game</button>
+                </div>
+
+                <div id="play" class="panel" hidden></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
