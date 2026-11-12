@@ -14,8 +14,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-<<<<<<< HEAD
-=======
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -35,5 +33,4 @@
         </plugins>
     </build>
 
->>>>>>> 859738e (add Strategy pattern for game recommendations)
 </project>

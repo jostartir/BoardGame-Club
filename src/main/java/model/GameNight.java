@@ -12,6 +12,8 @@ public class GameNight {
     private final LocalDateTime scheduledAt;
     private final int availableMinutes;
     private final List<Participant> participants;
+    private MeetingStatus status = MeetingStatus.PLANNED;
+    private final List<GameSession> sessions = new ArrayList<>();
 
     public GameNight(
             Long id,
@@ -84,6 +86,27 @@ public class GameNight {
                     "Participant was not found in the meeting"
             );
         }
+    }
+
+    public void startWith(GameSession firstSession){
+        if (status != MeetingStatus.PLANNED){
+            throw new IllegalStateException("Only a planned meeting can be started");
+        }
+
+        if (firstSession == null){
+            throw new IllegalArgumentException("Game session must not be null");
+        }
+
+        sessions.add(firstSession);
+        status = MeetingStatus.IN_PROGRESS;
+    }
+
+    public MeetingStatus getStatus(){
+        return  status;
+    }
+
+    public List<GameSession> getSessions(){
+        return List.copyOf(sessions);
     }
 
     public Long getId() {
