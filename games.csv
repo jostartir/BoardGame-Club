@@ -1,0 +1,4 @@
+id,title,minPlayers,maxPlayers,durationMinutes,difficulty,genre
+1,Uno,2,10,20,1,Card
+2,Monopoly,2,8,120,2,Family
+3,Chess,2,2,60,3,Abstract
